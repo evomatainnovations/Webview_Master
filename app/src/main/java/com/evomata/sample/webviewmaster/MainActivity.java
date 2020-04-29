@@ -2,6 +2,7 @@ package com.evomata.sample.webviewmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebSettings;
@@ -11,16 +12,17 @@ import android.webkit.WebViewClient;
 public class MainActivity extends AppCompatActivity {
 
     private WebView wv1;
-    String url_navigation = (String) "http://www.evomata.com";
+    String url_navigation = (String) "http://dhristi.evomata.com/ompv/dealers/Account/login/1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startService(new Intent(MainActivity.this,BackgroundService.class));
+
         wv1=(WebView)findViewById(R.id.webview);
         wv1.setWebViewClient(new MyBrowser());
-
 
         wv1.getSettings().setLoadsImagesAutomatically(true);
         wv1.getSettings().setJavaScriptEnabled(true);
